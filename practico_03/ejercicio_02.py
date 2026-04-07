@@ -10,8 +10,15 @@ class Articulo:
           clase (@classmethod) con una variable de clase
     """
 
-    # Completar
+    _last_id = 0
 
+    def __init__(self, nombre: str = "", id_: int = 0):
+        self.nombre = nombre
+        if id_ == 0:
+            Articulo._last_id += 1
+            self.id_ = Articulo._last_id
+        else:
+            self.id_ = id_
 
 # NO MODIFICAR - INICIO
 art1 = Articulo("manzana")

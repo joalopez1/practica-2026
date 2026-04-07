@@ -15,7 +15,17 @@ class Persona:
     - es_mayor_edad(): indica si es mayor de edad, devuelve un booleano.
     """
 
-    # Completar
+    def __init__(self, nombre: str = '', edad: int = 0, sexo: str = '', peso: float = 0.0, altura: float = 0.0):
+        self.nombre = nombre
+        self.edad = edad
+        self.sexo = sexo
+        self.peso = peso
+        self.altura = altura
+    
+    def es_mayor_edad(self) -> bool:
+        if self.edad >= 18:
+            return True
+        return False
 
 
 # NO MODIFICAR - INICIO
@@ -33,7 +43,16 @@ from dataclasses import dataclass
 class Persona:
     """Re-Escribir utilizando DataClasses"""
 
-    # Completar
+    nombre: str = ''
+    edad: int = 0
+    sexo: str = ''
+    peso: float = 0.0
+    altura: float = 0.0
+
+    def es_mayor_edad(self) -> bool:
+        if self.edad >= 18:
+            return True
+        return False
 
 
 # NO MODIFICAR - INICIO
