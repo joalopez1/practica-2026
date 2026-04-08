@@ -16,7 +16,13 @@ class Article:
 
     # NO MODIFICAR - FIN
 
-    # Completar
+    def __repr__(self) -> str:
+        return f"'{self.name}'"
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Article):
+            return NotImplemented
+        return self.name == other.name
 
 
 # NO MODIFICAR - INICIO
@@ -48,11 +54,39 @@ class ShoppingCart:
         return self
 
     # NO MODIFICAR - FIN
+    
+    def __str__(self) -> str:
+        """
+        Se llama al usar str(objeto). Devuelve la representación en string
+        de la lista de artículos. __repr__ de Article se encarga del formato.
+        """
+        return str(self.articles)
 
-    # Completar
+    def __repr__(self) -> str:
+        """
+        Representación oficial para recrear el objeto.
+        """
+        return f"ShoppingCart({self.articles})"
 
+    def __eq__(self, other: object) -> bool:
+        """
+        Se llama al usar ==. Comparamos si los dos carritos tienen los mismos
+        artículos, sin importar el orden. Usar sets es ideal para esto.
+        """
+        if not isinstance(other, ShoppingCart):
+            return NotImplemented
+        # Comparamos los nombres de los artículos para la igualdad
+        return set(a.name for a in self.articles) == set(a.name for a in other.articles)
 
-# NO MODIFICAR - INICIO
+    def __add__(self, other: ShoppingCart) -> ShoppingCart:
+        """
+        Se llama al usar +. Crea un nuevo carrito con los artículos de ambos.
+        """
+        if not isinstance(other, ShoppingCart):
+            return NotImplemented
+        return ShoppingCart(self.articles + other.articles)
+
+# NO MODIFICAR - FIN
 
 manzana = Article("Manzana")
 pera = Article("Pera")

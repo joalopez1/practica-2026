@@ -1,6 +1,6 @@
 """Deepcopy y Listas de Objetos"""
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from typing import List
 
 
@@ -23,8 +23,10 @@ def actualizar_precio(articulos: List[Articulo], porcentaje: float) -> List[Arti
     Restricción: NO se debe modificar la clase ni los tests.
     Hint: Usar deepcopy (https://docs.python.org/3/library/copy.html#copy.deepcopy)
     """
-    
-    # Completar
+    return [
+        replace(articulo, precio=articulo.precio * (1 + porcentaje / 100))
+        for articulo in articulos
+    ]   
 
 
 # NO MODIFICAR - INICIO
